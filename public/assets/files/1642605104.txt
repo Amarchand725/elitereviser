@@ -1,0 +1,13 @@
+KColms Email Sending Tested:
+1. Order (emails) (got email as a customer & as a seller)
+2. Demo (email) (got email)
+5. Update Password (got email)
+6. Approve album (got email to artist on approve/rejected)
+7. Event approve (got email to artist on approve/rejected)
+8. Approve Artist (got email)
+9. Registering as artist (got email as a artist and admin)
+
+updated for admin: crystal@kcolms.com
+
+user: contact@kcolms.com
+pwd: Kcolms@123$
