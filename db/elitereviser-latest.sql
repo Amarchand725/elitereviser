@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2022 at 08:56 PM
+-- Generation Time: Sep 27, 2022 at 07:07 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -698,7 +698,8 @@ INSERT INTO `role_user` (`role_id`, `user_id`, `user_type`) VALUES
 (3, 48, 'App\\Models\\User'),
 (3, 49, 'App\\Models\\User'),
 (3, 50, 'App\\Models\\User'),
-(3, 51, 'App\\Models\\User');
+(3, 51, 'App\\Models\\User'),
+(3, 52, 'App\\Models\\User');
 
 -- --------------------------------------------------------
 
@@ -895,7 +896,8 @@ INSERT INTO `users` (`id`, `name`, `last_name`, `organization`, `address`, `coun
 (48, 'Rahim', 'Gillian', 'Stark and Riley Associates', 'Quam eius cupidatat', 'Doloremque quibusdam', 'Consequatur mollitia', '83592', 'wyvununadu@mailinator.com', 'Simone', NULL, '$2y$10$HEmiMaR.lSLdclrfO.7DuOtOqQxt362cm6YCnRYgb7fxRtLbhyiVq', NULL, 1, NULL, 1, NULL, NULL, '2022-08-13 03:30:50', '2022-08-13 03:30:50'),
 (49, 'Davis', 'Mariko', 'Merritt and Dean Inc', 'Esse perspiciatis a', 'Molestiae totam et i', 'Facilis quod iusto e', '13911', 'fisywociwy@mailinator.com', 'Hyacinth', NULL, '$2y$10$gURCdjZjCpWAiv1PDyEfe.oqkDvhWJ3S8vVz45sEuM8SPCUHaxgHS', NULL, 1, NULL, 1, NULL, NULL, '2022-08-14 03:42:05', '2022-08-14 03:42:05'),
 (50, 'Ivy', 'Zenaida', 'Munoz and Hendrix Co', 'Asperiores maiores q', 'Consequat Eveniet', 'Velit sit vel neque', '51608', 'wowil@mailinator.com', 'Rhonda', NULL, '$2y$10$lCbjEGA3owH2lWa2SASxUeQ4sKhLrJUGxz2Wac9ubK2pFtEpnvCzG', NULL, 1, NULL, 1, NULL, NULL, '2022-09-02 12:49:53', '2022-09-02 12:49:53'),
-(51, 'Hedy', 'Rae', 'Ray and Baird Inc', 'Maiores eaque atque', 'Amet aut officia vo', 'Quas duis eos qui ve', '98421', 'mudexihi@mailinator.com', 'Upton', NULL, '$2y$10$Cg0h9dhuO2h1AVjuQkihKe95WsqQsggv2YDFNQ30Y3moURwYaEi.S', NULL, 1, NULL, 1, NULL, NULL, '2022-09-20 13:33:55', '2022-09-20 13:33:55');
+(51, 'Hedy', 'Rae', 'Ray and Baird Inc', 'Maiores eaque atque', 'Amet aut officia vo', 'Quas duis eos qui ve', '98421', 'mudexihi@mailinator.com', 'Upton', NULL, '$2y$10$Cg0h9dhuO2h1AVjuQkihKe95WsqQsggv2YDFNQ30Y3moURwYaEi.S', NULL, 1, NULL, 1, NULL, NULL, '2022-09-20 13:33:55', '2022-09-20 13:33:55'),
+(52, 'Nina', 'Maxine', 'Key and Taylor Inc', 'Sed ut ipsum pariatu', 'Non in eaque autem i', 'Alias sit nemo aliqu', '19756', 'sanyxiw@mailinator.com', 'Ifeoma', NULL, '$2y$10$P62rjJjx66dBugtUxJtqQOhQMnb9boeuxhpND41IpnDCHILkHaxJS', NULL, 1, NULL, 1, NULL, NULL, '2022-09-23 14:55:55', '2022-09-23 14:55:55');
 
 --
 -- Indexes for dumped tables
@@ -1164,7 +1166,7 @@ ALTER TABLE `subscribes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- Constraints for dumped tables
