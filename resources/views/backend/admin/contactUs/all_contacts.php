@@ -1,0 +1,153 @@
+<!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-5 col-8 align-self-center">
+                        <h3 class="text-themecolor m-b-0 m-t-0">All Contacts</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">All Contacts</li>
+                        </ol>
+                    </div>
+                    <div class="col-md-7 col-4 align-self-center">
+                        <div class="d-flex m-t-10 justify-content-end">
+                            <div class="d-flex m-r-20 m-l-10 hidden-md-down">
+                                <div class="chart-text m-r-10">
+                                    <h6 class="m-b-0"><small>Total Contacts</small></h6>
+                                    <h4 class="m-t-0 text-info"><?php if(!empty($all_records)){
+										echo str_pad(count($all_records),4,0,STR_PAD_LEFT);?>
+									<?php }?></h4></div>
+                                <div class="spark-chart">
+                                    <div id="monthchart"></div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <button class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row" style="margin-bottom: 10px;">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-9" style="margin-bottom: 10px;">
+								<div class="search-field">
+									<input type="text" class="form-control" name="searchData" id="searchData" placeholder="Search by name | email | organization name">
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="search-button" style="float:right;">
+									<button type="button" id="search" class="btn btn-info">Search</button>
+									<button type="button" id="reset" class="btn btn-warning">Reset</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="ajaxContent" class="row"></div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+    <script src="<?= base_url();?>assets/admin/main-assets/plugins/jquery/jquery.min.js"></script>
+	<script type="text/javascript">
+	         
+   /* Categories Get With Search  */
+	$(function() {
+		
+		/*--first time load--*/
+		ajaxlistCategories(page_url=false);
+		
+		/*-- Search keyword--*/
+		$(document).on('click', "#search", function(event) {
+			ajaxlistCategories(page_url=false);
+			event.preventDefault();
+		});
+		
+		/*-- Reset Search--*/
+		$(document).on('click', "#reset", function(event) {
+
+			$("#searchData").val('');
+			ajaxlistCategories(page_url=false);
+			event.preventDefault();
+		
+		});
+		
+		
+		/*-- Page click --*/
+		$(document).on('click', ".pagination li a", function(event) {
+			var page_url = $(this).attr('href');
+			ajaxlistCategories(page_url);
+			event.preventDefault();
+		});
+		
+		/*-- create function ajaxlistCategories --*/
+		function ajaxlistCategories(page_url = false)
+		{
+			$("#search").html('<i class="fa fa-spinner fa-spin"></i><i> Searching</i>');
+			$("#example").css('opacity','0.3');
+
+			var searchData = $("#searchData").val();
+
+			var dataString = 'searchData='+searchData;
+			var base_url = '<?php echo base_url('all-contacts-with-ajax/0') ?>';
+			if(page_url == false) {
+				var page_url = base_url;
+			}
+			
+			$.ajax({
+				type: "POST",
+				url: page_url,
+				data: dataString,
+				success: function(response) {
+					$("#search").html('Search');
+					$("#example").css('opacity','1');
+					/* console.log(response); */
+					$("#ajaxContent").html(response);
+				}
+			});
+		}
+	});
+	/* Categories Get With Search  */
+    </script>
+				<!---Delete Sales File -->
+				<script type="text/javascript">
+					function deleteData(id) {
+						swal({title:"",
+							text:"Are you sure you want to delete this contact?",icon:"error",
+							buttons:{cancel:{text:"Cancel",value:null,visible:!0,className:"btn btn-default",closeModal:!0},
+								confirm:{text:"Delete",value:!0,visible:!0,className:"btn btn-danger",closeModal:!0}}
+						}).then(function(isConfirm) {
+							if (isConfirm) {
+								$.ajax({
+									type:"POST",
+									url:"<?php echo base_url('delete-contact/'); ?>"+id,
+									dataType:'JSON',
+									success:function(data){
+										if(data==true){
+											$('#tr-remove'+id).fadeOut(500);
+											swal({title:"Successfully!",text:"contact deleted successfully",icon:"success",timer:2000});
+										}
+									},
+									error:function (er) {
+										console.log(er);
+										$.gritter.add({title:"Something went wrong!",text:"",sticky:!1,time:3000});
+									}
+								});
+							}
+						});
+					}
+				</script>
+				<!---Delete Sales File -->
